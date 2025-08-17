@@ -1,0 +1,64 @@
+    :root {
+      --font-primary: 'Baloo', Arial, sans-serif;
+      --color-bg: #345c9a; /* Main background color */
+      --color-header: #2c4a7d; /* Darker blue for header */
+      --color-panel-dark: #2c4a7d; /* Darker blue for the problem box */
+      --color-text: #ffffff;
+      --color-primary: #ff9900; /* Orange for highlights/buttons */
+      --color-secondary: #4a90e2; 
+      --color-correct: #7ed321;
+      --color-incorrect: #d0021b;
+      --border-radius: 1.5rem;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html, #root {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000;
+      font-family: var(--font-primary);
+      color: var(--color-text);
+    }
+
+    #root {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .scaling-container {
+      aspect-ratio: 16 / 9;
+      width: 100vw;
+      height: calc(100vw * 9 / 16);
+      max-height: 100vh;
+      max-width: calc(100vh * 16 / 9);
+      position: relative;
+      overflow: hidden;
+      background-color: var(--color-bg);
+      /* Placeholder for user's background image */
+      background-image: url('placeholder-for-your-bg.png');
+      background-size: cover;
+      background-position: center;
+      transform-origin: center center;
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+      color: var(--color-text);
+      outline: none; /* We use a custom focus style */
+    }
+
+    /* Focus highlight style for D-pad/keyboard navigation */
+    .focused {
+      box-shadow: 0 0 0 0.4rem #ffffff, 0 0 0 0.8rem var(--color-primary);
+      transform: scale(1.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }

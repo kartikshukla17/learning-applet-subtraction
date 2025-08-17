@@ -1,0 +1,411 @@
+/* SubtractionApp.css */
+/* Base container with aspect ratio preservation */
+.subtraction-app {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #2c5697; /* Fallback color if image doesn't load */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Baloo', Arial, sans-serif;
+}
+
+/* Skip to content link - hidden by default, visible on focus */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #2c5697;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Responsive container that maintains 16:9 aspect ratio */
+.subtraction-app::before {
+  content: "";
+  display: block;
+  padding-top: calc(9 / 16 * 100%); /* 16:9 aspect ratio */
+}
+
+/* Wrapper to scale content uniformly */
+.subtraction-app > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Language selector */
+.language-selector {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  display: flex;
+  gap: 5px;
+}
+
+.language-selector button {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid white;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: calc(0.7rem + 1px);
+}
+
+.language-selector button.active {
+  background-color: white;
+  color: #2c5697;
+}
+
+/* Header */
+.app-header {
+  width: 100%;
+  padding: 10px 0;
+  background-color: rgba(44, 86, 151, 0.9);
+  color: white;
+  text-align: center;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: calc(1.5rem + 2px);
+  font-weight: bold;
+}
+
+/* Main content area */
+.app-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Left section with character and speech bubble */
+.left-section {
+  width: 30%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.speech-bubble {
+  background-color: white;
+  border-radius: 20px;
+  padding: 15px;
+  margin: 20px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: calc(1rem + 1px);
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 30px;
+  border-width: 15px 15px 0;
+  border-style: solid;
+  border-color: white transparent transparent;
+}
+
+.character-container {
+  position: relative;
+  z-index: 1;
+  margin-top: -20px; /* Overlap with speech bubble */
+}
+
+.character {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Right section with problem and options */
+.right-section {
+  width: 70%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.instruction-area {
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(44, 86, 151, 0.8);
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: calc(1.1rem + 1px);
+}
+
+/* Subtraction problem display */
+.subtraction-problem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  font-size: calc(2.5rem + 2px);
+  font-weight: bold;
+  color: white;
+}
+
+.place-values {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.place-values span {
+  width: 60px;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.hundreds {
+  color: #f7d547; /* Yellow */
+}
+
+.tens {
+  color: #ff6b6b; /* Red */
+}
+
+.units {
+  color: #4ecdc4; /* Teal */
+}
+
+.number-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 5px 0;
+}
+
+.number-row span {
+  width: 60px;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.operator {
+  width: 20px !important;
+  margin-right: 0 !important;
+}
+
+.divider {
+  width: 260px;
+  height: 3px;
+  background-color: white;
+  margin: 10px 0;
+}
+
+/* Options container */
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+  width: 80%;
+  max-width: 300px;
+}
+
+.option {
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: calc(1.2rem + 1px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.option:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.option:focus {
+  outline: 3px solid #ff9800;
+  outline-offset: 2px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.option.focused {
+  outline: 3px solid #ff9800;
+  outline-offset: 2px;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.3);
+}
+
+.option.correct {
+  background-color: #4caf50; /* Green */
+  border-color: #4caf50;
+}
+
+.option.incorrect {
+  background-color: #f44336; /* Red */
+  border-color: #f44336;
+}
+
+/* Feedback area */
+.feedback {
+  margin-top: 20px;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  font-size: calc(1.1rem + 1px);
+  font-weight: bold;
+}
+
+/* Next button */
+.next-button-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.next-button {
+  background-color: #ff9800; /* Orange */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 30px;
+  font-size: calc(1.2rem + 1px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+  background-color: #f57c00;
+}
+
+.next-button::after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>');
+  background-size: contain;
+  margin-left: 10px;
+}
+
+/* Animations */
+.animated {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+.highlighted {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsive scaling for different resolutions */
+@media (min-aspect-ratio: 16/9) {
+  .subtraction-app {
+    width: calc(100vh * (16/9));
+    height: 100vh;
+    margin: 0 auto;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .subtraction-app {
+    width: 100vw;
+    height: calc(100vw * (9/16));
+    margin: auto 0;
+  }
+}
+
+/* Media queries for different screen sizes */
+@media (max-width: 960px) {
+  .subtraction-problem {
+    font-size: calc(2rem + 2px);
+  }
+  
+  .speech-bubble,
+  .instruction-area,
+  .option,
+  .feedback {
+    font-size: calc(0.9rem + 1px);
+  }
+  
+  .app-header h1 {
+    font-size: calc(1.3rem + 2px);
+  }
+}
+
+@media (max-width: 768px) {
+  .app-content {
+    flex-direction: column;
+  }
+  
+  .left-section,
+  .right-section {
+    width: 100%;
+  }
+  
+  .left-section {
+    order: 2;
+    max-height: 30vh;
+  }
+  
+  .right-section {
+    order: 1;
+  }
+  
+  .character-container {
+    display: none; /* Hide character on very small screens */
+  }
+}
+
+/* Ensure focus visibility for accessibility */
+:focus {
+  outline: 3px solid #ff9800;
+  outline-offset: 2px;
+}
+
+/* Utility classes for control functions */
+.no-animation {
+  animation: none !important;
+  transition: none !important;
+}
+
+.no-highlight {
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+}
