@@ -4,7 +4,19 @@ import App from './App.jsx';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+ <div
+  className="scaling-container"
+  ref={(element) => {
+    if (element) {
+      element.style.height = `${window.innerHeight}px`;
+    }
+  }}
+  style={{
+    backgroundImage: "url('./assets/background.png')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  }}
+>
+  <App characterUrl="./assets/character_excited.png" />
+</div>
 );

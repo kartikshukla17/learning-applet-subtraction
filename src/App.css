@@ -1,6 +1,6 @@
     :root {
       --font-primary: 'Baloo', Arial, sans-serif;
-      --color-bg: #345c9a; /* Main background color */
+    
       --color-header: #2c4a7d; /* Darker blue for header */
       --color-panel-dark: #2c4a7d; /* Darker blue for the problem box */
       --color-text: #ffffff;
@@ -40,7 +40,6 @@
       max-width: calc(100vh * 16 / 9);
       position: relative;
       overflow: hidden;
-      background-color: var(--color-bg);
       /* Placeholder for user's background image */
       background-image: url('placeholder-for-your-bg.png');
       background-size: cover;
